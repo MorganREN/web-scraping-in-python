@@ -18,11 +18,11 @@ if __name__ == "__main__":
     tree = etree.HTML(page_text)
 
     ul_list = tree.xpath("/html/body/div[3]/div/div[1]/div[2]/div[2]/ul")
-    # print(ul_list)
+    print(ul_list)
     for ul in ul_list:
         li_list = ul.xpath("./div[2]/li")
         for li in li_list:
             city_name = li.xpath("./a/text()")[0]
-            print(city_name)
+            # print(city_name)
 
 
