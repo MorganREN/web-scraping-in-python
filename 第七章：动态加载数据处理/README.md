@@ -14,3 +14,9 @@ selenium使用流程：
         - 驱动程序和浏览器的映射关系：https://blog.csdn.net/huilan_same/article/details/51896672
     - 实例化一个浏览器对象
     - 编写基于浏览器自动化的操作代码
+        - 发起请求：get(url)
+        - 标签定位：find系列方法
+        - 标签交互：send_keys('xxx')
+        - 执行js程序：execute_script('jsCode')
+        - 前进、后退：back(), forward()
+        - 关闭浏览器：quit()
