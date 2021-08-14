@@ -20,3 +20,11 @@ selenium使用流程：
         - 执行js程序：execute_script('jsCode')
         - 前进、后退：back(), forward()
         - 关闭浏览器：quit()
+    - selenium处理iframe
+        - 如果定位的标签存在于iframe标签之中，则必须使用switch_to.frame(id)
+        - 动作链(拖动)：from selenium.webdriver import ActionChains
+            - 实例化一个动作链对象：action = ActionChains(bro)
+            - click_and_hold(div)：长按且点击操作
+            - move_by_offset(x, y)
+            - perform()让动作链立即执行
+            - action.release()释放动作链对象
