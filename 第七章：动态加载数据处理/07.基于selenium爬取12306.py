@@ -54,13 +54,25 @@ if __name__ == "__main__":
     pwd_input.send_keys('Ren010218')
 
     # 点击验证图片
+    # 问题：若出现两张以上符合目标，selenium点击一次后再点击另一张时，前一张的标签会消失
     action = ActionChains(bro)
     for pic_num in range(len(coord_list)):
         action.move_to_element_with_offset(img, float(coord_list[pic_num][0]), float(coord_list[pic_num][1])).click().perform()
+
         time.sleep(0.5)
 
     # 点击立即登录
     login_btn.click()
+
+    # 定位并点击滑块标签
+    drag_s = bro.find_element_by_id('nc_1__bg')
+    drag_length = bro.find_element_by_id('nc-lang-cnt')
+    length = drag_length.value_of_css_property('width')
+    action.click_and_hold(drag_s)
+
+    # 滑动滑块并释放动作
+    action.move_by_offset(length, 0)
+    action.release(drag_s)
 
 
     # bro.quit()
