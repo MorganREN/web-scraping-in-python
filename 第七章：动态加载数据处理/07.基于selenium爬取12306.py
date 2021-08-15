@@ -71,6 +71,7 @@ if __name__ == "__main__":
     action.click_and_hold(drag_s)
 
     # 滑动滑块并释放动作
+    # 问题：尚未解决滑块问题
     action.move_by_offset(length, 0)
     action.release(drag_s)
 
