@@ -60,25 +60,29 @@ if __name__ == "__main__":
     for pic_num in coord_list:
         x = int(pic_num[0])
         y = int(pic_num[1])
-        print(str(len(coord_list)))
         action.move_to_element_with_offset(img, x, y).click()
     action.perform()
 
 
     # 点击立即登录
     login_btn.click()
+    time.sleep(3)
+
+    # 防止12306禁止selenium
+    script = 'Object.defineProperty(navigator,"webdriver",{get:()=>undefined,});'
+    bro.execute_script(script)
 
     # 定位并点击滑块标签
-
-    drag_s = bro.find_element_by_id('nc_1__n1z')
-    drag_length = bro.find_element_by_id('nc-lang-cnt')
-    length = drag_length.value_of_css_property('width')
-    action.click_and_hold(drag_s)
+    action.reset_actions()
+    span = bro.find_element_by_xpath('//*[@id="nc_1_n1z"]')
+    action.click_and_hold(span)
 
     # 滑动滑块并释放动作
     # 问题：尚未解决滑块问题
-    action.move_by_offset(length, 0)
-    action.release(drag_s)
+
+    action.move_by_offset(350, 0).perform()
+    time.sleep(1)
+    action.release(span)
 
 
     bro.quit()
