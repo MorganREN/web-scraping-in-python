@@ -19,7 +19,7 @@ if __name__ == "__main__":
     # 打开12306网页
     bro = webdriver.Chrome(executable_path='chromedriver.exe')
     bro.get('https://kyfw.12306.cn/otn/resources/login.html')
-    time.sleep(1)
+    time.sleep(0.5)
 
     # 定位账号密码登录
     switch = bro.find_element_by_class_name('login-hd-account')
@@ -66,23 +66,23 @@ if __name__ == "__main__":
 
     # 点击立即登录
     login_btn.click()
-    time.sleep(3)
+    time.sleep(3) # 此刻休息3秒，使网页加载出滑块，否则会定位失败
 
     # 防止12306禁止selenium
     script = 'Object.defineProperty(navigator,"webdriver",{get:()=>undefined,});'
     bro.execute_script(script)
 
     # 定位并点击滑块标签
-    action.reset_actions()
+    # 重新实例化一个新的ActionChain，避免了之前链的影响
+    action2 = ActionChains(bro)
     span = bro.find_element_by_xpath('//*[@id="nc_1_n1z"]')
-    action.click_and_hold(span)
+    action2.click_and_hold(span)
 
     # 滑动滑块并释放动作
     # 问题：尚未解决滑块问题
-
-    action.move_by_offset(350, 0).perform()
+    action2.move_by_offset(350, 0).perform()
     time.sleep(1)
-    action.release(span)
+    action2.release(span)
 
-
+    time.sleep(10)
     bro.quit()
