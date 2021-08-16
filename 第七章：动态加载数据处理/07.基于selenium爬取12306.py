@@ -27,7 +27,6 @@ if __name__ == "__main__":
     time.sleep(1.5)
 
     # 保存验证码图片并进行分析，得到坐标
-
     img = bro.find_element_by_id('J-loginImg')
     detail_img = img.screenshot_as_png
     with open("./img_code.png", 'wb') as np:
@@ -55,17 +54,23 @@ if __name__ == "__main__":
 
     # 点击验证图片
     # 问题：若出现两张以上符合目标，selenium点击一次后再点击另一张时，前一张的标签会消失
+    # 解决：将perform()单独拉出到循环外，等所有图片都被点击后再执行动作链；
+    # 不然会发生动作链中的动作重复
     action = ActionChains(bro)
-    for pic_num in range(len(coord_list)):
-        action.move_to_element_with_offset(img, float(coord_list[pic_num][0]), float(coord_list[pic_num][1])).click().perform()
+    for pic_num in coord_list:
+        x = int(pic_num[0])
+        y = int(pic_num[1])
+        print(str(len(coord_list)))
+        action.move_to_element_with_offset(img, x, y).click()
+    action.perform()
 
-        time.sleep(0.5)
 
     # 点击立即登录
     login_btn.click()
 
     # 定位并点击滑块标签
-    drag_s = bro.find_element_by_id('nc_1__bg')
+
+    drag_s = bro.find_element_by_id('nc_1__n1z')
     drag_length = bro.find_element_by_id('nc-lang-cnt')
     length = drag_length.value_of_css_property('width')
     action.click_and_hold(drag_s)
@@ -76,4 +81,4 @@ if __name__ == "__main__":
     action.release(drag_s)
 
 
-    # bro.quit()
+    bro.quit()
