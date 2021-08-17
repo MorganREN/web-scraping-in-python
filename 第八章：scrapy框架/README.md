@@ -21,3 +21,15 @@ scrapy框架
         - scrapy crawl spiderName
         - scrapy crawl spiderName --nolog (可只看输出结果，但程序出错会有问题)
   
+- scrapy数据解析
+
+- scrapy持久化存储：
+    - 基于终端指令：
+        - 要求：只可以将parse方法的返回值存储到本地的文本文件中
+        - 注意：持久化存储的文本文件格式只能为('json', 'jsonlines', 'jl', 'csv', 'xml', 'marshal', 'pickle'
+        - 指令：scrapy crawl spiderName -o filePath
+        - 好处：简洁高效便捷
+        - 缺点：局限性比较强(数据只可以存储到指定后缀的文本文件中)
+        
+    - 基于管道：
+        - 
