@@ -63,9 +63,10 @@ LOG_LEVEL = 'ERROR'
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'qiubaiPro.pipelines.QiubaiproPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'qiubaiPro.pipelines.QiubaiproPipeline': 300,
+    # 300表示的是优先级，数值越小，优先级越高
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
