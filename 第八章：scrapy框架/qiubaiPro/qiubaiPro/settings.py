@@ -65,6 +65,7 @@ LOG_LEVEL = 'ERROR'
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'qiubaiPro.pipelines.QiubaiproPipeline': 300,
+   'qiubaiPro.pipelines.mysqlPipeline': 301,
     # 300表示的是优先级，数值越小，优先级越高
 }
 
