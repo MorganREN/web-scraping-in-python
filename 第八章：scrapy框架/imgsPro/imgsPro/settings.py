@@ -64,9 +64,9 @@ LOG_LEVEL = 'ERROR'
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'imgsPro.pipelines.ImgsproPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'imgsPro.pipelines.imgsPipeLine': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -88,3 +88,6 @@ LOG_LEVEL = 'ERROR'
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+# 指定图片文件存储的目录
+IMAGES_STORE = './imgs'
