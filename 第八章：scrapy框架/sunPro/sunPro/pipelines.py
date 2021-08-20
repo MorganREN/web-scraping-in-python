@@ -10,4 +10,10 @@ from itemadapter import ItemAdapter
 
 class SunproPipeline:
     def process_item(self, item, spider):
+        # 如何判断item的类型
+        # 将数据写入数据库时，如何保证数据的一致性
+        if item.__class__.__name__ == 'DetailItem':
+            print(item['new_id'], item['new_content'])
+        else:
+            print(item['new_num'], item['title'])
         return item

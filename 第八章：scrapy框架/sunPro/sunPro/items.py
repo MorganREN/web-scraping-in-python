@@ -8,5 +8,9 @@ import scrapy
 
 class SunproItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    title = scrapy.Field()
+    new_num = scrapy.Field()
+
+class DetailItem(scrapy.Item):
+    new_id = scrapy.Field()
+    new_content = scrapy.Field()
