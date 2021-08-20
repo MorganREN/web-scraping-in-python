@@ -109,7 +109,19 @@
                 - 1. 通过网易新闻的首页解析出五大板块对应的详情页的url(没有动态加载)
                 - 2. 每一个板块对应的新闻标题都是动态加载出来的
                 - 3. 通过解析出每一条新闻详情页的url获取详情页的页面源码，解析出新闻内容
-
+    
+- CrawlSpider：类，Spider的子类
+    - 全站数据爬取的方式
+        - 基于Spider实现：手动请求发送
+        - 基于CrawlSpider实现
+    - CrawlSpider的使用：
+        - 创建一个工程
+        - cd XXX
+        - 创建爬虫文件(CrawlSpider):
+            - scrapy genspider -t crawl xxx www.xxx.com
+            - 链接提取器：
+                - 作用：根据指定规则(allow='正则')进行指定链接的提取
+            - 规则解析器：将链接提取器提取到的链接进行指定规则(callback)的解析操作
 
 
 
